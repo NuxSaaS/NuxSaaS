@@ -5,6 +5,10 @@ type MiddlewareOptions = false | {
    * Redirect guest to this route
    */
   unauthenticatedRedirect?: string
+} |
+{
+  unauthenticatedOnly: boolean
+  navigateAuthenticatedTo?: string
 }
 
 declare module '#app' {
@@ -29,14 +33,20 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
   await fetchSession()
 
-  // If not authenticated, redirect to home
-  if (!loggedIn.value) {
+  if (loggedIn.value) {
+    if (to.meta.auth && 'unauthenticatedOnly' in to.meta.auth) {
+      // If authenticated and unauthenticatedOnly is true, redirect to navigateAuthenticatedTo
+      return navigateTo(to.meta.auth.navigateAuthenticatedTo || '/')
+    }
+  } else {
+    // If not authenticated, redirect to home
     // Avoid infinite redirect
     if (to.path === unauthenticatedRedirect) {
       return
     }
     return navigateTo(`${unauthenticatedRedirect}?redirect=${to.fullPath}`)
   }
+
   const routeParts = (to.name as string).split('___')
   const routeName = routeParts[0]
   const localePath = useLocalePath()
