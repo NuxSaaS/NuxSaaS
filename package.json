@@ -16,6 +16,7 @@
     "db:migrate": "drizzle-kit migrate --config ./server/database/drizzle.config.ts",
     "build": "nuxt build",
     "serve": "node .output/server/index.mjs",
+    "preview:cf": "wrangler dev",
     "deploy": "wrangler deploy",
     "prepare": "husky"
   },
