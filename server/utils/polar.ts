@@ -1,0 +1,99 @@
+import type { Benefit } from '@polar-sh/sdk/models/components/benefit.js'
+import type { BenefitGrantWebhook } from '@polar-sh/sdk/models/components/benefitgrantwebhook.js'
+import type { Checkout } from '@polar-sh/sdk/models/components/checkout.js'
+import type { Customer } from '@polar-sh/sdk/models/components/customer.js'
+import type { CustomerState } from '@polar-sh/sdk/models/components/customerstate.js'
+import type { Order } from '@polar-sh/sdk/models/components/order.js'
+import type { Organization } from '@polar-sh/sdk/models/components/organization.js'
+import type { Product } from '@polar-sh/sdk/models/components/product.js'
+import type { Refund } from '@polar-sh/sdk/models/components/refund.js'
+import type { Subscription } from '@polar-sh/sdk/models/components/subscription.js'
+import type { UserWithRole } from 'better-auth/plugins'
+import { checkout, polar, portal, usage, webhooks } from '@polar-sh/better-auth'
+import { Polar } from '@polar-sh/sdk'
+import { runtimeConfig } from './runtimeConfig'
+
+const createPolarClient = () => {
+  return new Polar({
+    accessToken: runtimeConfig.polarAccessToken,
+    server: runtimeConfig.polarServer as 'sandbox' | 'production'
+  })
+}
+
+export const ensurePolarCustomer = async (user: UserWithRole) => {
+  const client = createPolarClient()
+  const exist = await client.customers.getExternal({ externalId: user.id })
+  if (!exist) {
+    const customer = await client.customers.create({
+      externalId: user.id,
+      email: user.email,
+      name: user.name
+    })
+    return customer
+  }
+}
+
+const addPaymentLog = async (hookType: string, data: Customer | Checkout | Benefit | BenefitGrantWebhook | Order | Organization | Product | Refund | Subscription | CustomerState) => {
+  if (hookType.startsWith('checkout.')) {
+    const checkout = data as Checkout
+    await logAuditEvent({
+      userId: checkout.customerExternalId || undefined,
+      category: 'payment',
+      action: `polar:${hookType}:${checkout.product.name}`,
+      targetType: 'polarExternalId',
+      targetId: checkout.customerExternalId || checkout.metadata.email as string,
+      status: 'success'
+    })
+  } else if (hookType.startsWith('customer.')) {
+    const customer = data as Customer
+    await logAuditEvent({
+      userId: customer.externalId || undefined,
+      category: 'payment',
+      action: `polar:${hookType}`,
+      targetType: 'polarExternalId',
+      targetId: customer.externalId || undefined,
+      status: 'success'
+    })
+  } else if (hookType.startsWith('subscription.')) {
+    const subscription = data as Subscription
+    await logAuditEvent({
+      userId: subscription.customer.externalId || undefined,
+      category: 'payment',
+      action: `polar:${hookType}:${subscription.product.name}`,
+      targetType: 'polarExternalId',
+      targetId: subscription.customer.externalId || undefined,
+      status: 'success'
+    })
+  }
+}
+
+export const setupPolar = () => polar({
+  client: createPolarClient(),
+  createCustomerOnSignUp: true,
+  use: [
+    checkout({
+      products: [
+        {
+          productId: runtimeConfig.polarProductIdProMonth,
+          slug: 'pro-monthly'
+        },
+        {
+          productId: runtimeConfig.polarProductIdProYear,
+          slug: 'pro-yearly'
+        }
+      ],
+      successUrl: '/',
+      authenticatedUsersOnly: true
+    }),
+    portal(),
+    usage(),
+    webhooks({
+      // On Polar Organization Settings: {APP_URL}/api/auth/polar/webhooks
+      secret: runtimeConfig.polarWebhookSecret,
+      onPayload: async (payload) => {
+        // Catch-all for all events
+        await addPaymentLog(payload.type || '', payload.data)
+      }
+    })
+  ]
+})

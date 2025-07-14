@@ -11,6 +11,12 @@ export const generateRuntimeConfig = () => ({
   stripeWebhookSecret: process.env.NUXT_STRIPE_WEBHOOK_SECRET,
   stripePriceIdProMonth: process.env.NUXT_STRIPE_PRICE_ID_PRO_MONTH,
   stripePriceIdProYear: process.env.NUXT_STRIPE_PRICE_ID_PRO_YEAR,
+  // Polar
+  polarServer: process.env.NUXT_POLAR_SERVER,
+  polarAccessToken: process.env.NUXT_POLAR_ACCESS_TOKEN,
+  polarWebhookSecret: process.env.NUXT_POLAR_WEBHOOK_SECRET,
+  polarProductIdProMonth: process.env.NUXT_POLAR_PRODUCT_ID_PRO_MONTH,
+  polarProductIdProYear: process.env.NUXT_POLAR_PRODUCT_ID_PRO_YEAR,
   // Resend
   resendApiKey: process.env.NUXT_RESEND_API_KEY,
   // Github
@@ -29,6 +35,7 @@ export const generateRuntimeConfig = () => ({
     appRepo: process.env.NUXT_APP_REPO,
     appNotifyEmail: process.env.NUXT_APP_NOTIFY_EMAIL,
     appContactEmail: process.env.NUXT_APP_CONTACT_EMAIL,
+    payment: process.env.NUXT_PAYMENT,
     auth: {
       redirectUserTo: '/',
       redirectGuestTo: '/signin'

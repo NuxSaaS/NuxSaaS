@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const localePath = useLocalePath()
 const { t } = useI18n()
-const { loggedIn, signOut, user, activeSubscription } = useAuth()
+const { loggedIn, signOut, user, activeStripeSubscription, activePolarSubscriptions } = useAuth()
 </script>
 
 <template>
@@ -34,7 +34,7 @@ const { loggedIn, signOut, user, activeSubscription } = useAuth()
         <span>
           {{ user?.name }}
           <UBadge
-            v-if="activeSubscription"
+            v-if="activeStripeSubscription || activePolarSubscriptions?.length"
             label="Pro"
           />
         </span>
