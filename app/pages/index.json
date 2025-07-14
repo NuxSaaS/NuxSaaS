@@ -32,7 +32,7 @@
           },
           "paymentReady": {
             "title": "Payment Ready",
-            "description": "Stripe integration for subscription management"
+            "description": "Stripe/Polar integration for subscription management"
           },
           "noVendorLockIn": {
             "title": "No Vendor Lock-in",
@@ -119,7 +119,7 @@
           },
           "paymentReady": {
             "title": "支付就绪",
-            "description": "集成 Stripe 实现订阅管理"
+            "description": "集成 Stripe/Polar 实现订阅管理"
           },
           "noVendorLockIn": {
             "title": "无供应商锁定",
@@ -206,7 +206,7 @@
           },
           "paymentReady": {
             "title": "決済対応",
-            "description": "サブスクリプション管理用の Stripe 統合"
+            "description": "サブスクリプション管理用の Stripe/Polar 統合"
           },
           "noVendorLockIn": {
             "title": "ベンダーロックインなし",
@@ -293,7 +293,7 @@
           },
           "paymentReady": {
             "title": "Prêt pour le Paiement",
-            "description": "Intégration Stripe pour la gestion des abonnements"
+            "description": "Intégration Stripe/Polar pour la gestion des abonnements"
           },
           "noVendorLockIn": {
             "title": "Pas de Dépendance Fournisseur",
