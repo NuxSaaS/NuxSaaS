@@ -63,6 +63,7 @@
     "happy-dom": "^18.0.1",
     "husky": "^9.1.7",
     "playwright-core": "^1.54.1",
+    "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4",
     "wrangler": "^4.24.3"
