@@ -35,7 +35,7 @@ export const generateRuntimeConfig = () => ({
     appRepo: process.env.NUXT_APP_REPO,
     appNotifyEmail: process.env.NUXT_APP_NOTIFY_EMAIL,
     appContactEmail: process.env.NUXT_APP_CONTACT_EMAIL,
-    payment: process.env.NUXT_PAYMENT,
+    payment: process.env.NUXT_PAYMENT || 'stripe',
     auth: {
       redirectUserTo: '/',
       redirectGuestTo: '/signin'
