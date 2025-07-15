@@ -29,7 +29,12 @@ export default defineEventHandler(async (event) => {
         continue
       }
       try {
-        await ensureStripeCustomer(user)
+        const customer = await ensureStripeCustomer(user)
+        if (customer) {
+          await db.update(userTable).set({
+            stripeCustomerId: customer.id
+          }).where(eq(userTable.id, user.id))
+        }
         results.stripeResults.push({
           userId: user.id,
           status: 'success'
@@ -58,7 +63,7 @@ export default defineEventHandler(async (event) => {
         if (customer && customer.externalId) {
           await db.update(userTable).set({
             polarCustomerId: customer.id
-          }).where(eq(userTable.id, customer.externalId))
+          }).where(eq(userTable.id, user.id))
         }
         results.polarResults.push({
           userId: user.id,

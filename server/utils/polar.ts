@@ -11,7 +11,6 @@ import type { Subscription } from '@polar-sh/sdk/models/components/subscription.
 import type { InferSelectModel } from 'drizzle-orm'
 import { checkout, polar, portal, usage, webhooks } from '@polar-sh/better-auth'
 import { Polar } from '@polar-sh/sdk'
-import { ResourceNotFound } from '@polar-sh/sdk/models/errors/resourcenotfound'
 import { eq } from 'drizzle-orm'
 import { user as userTable } from '../database/schema'
 import { runtimeConfig } from './runtimeConfig'
@@ -25,19 +24,25 @@ const createPolarClient = () => {
 
 export const ensurePolarCustomer = async (user: InferSelectModel<typeof userTable>) => {
   const client = createPolarClient()
-  try {
-    return await client.customers.getExternal({ externalId: user.id })
-  } catch (e) {
-    if (e instanceof ResourceNotFound) {
-      const customer = await client.customers.create({
-        externalId: user.id,
-        email: user.email,
-        name: user.name
+  const { result: existingCustomers } = await client.customers.list({ email: user.email })
+  const existingCustomer = existingCustomers.items[0]
+  if (existingCustomer) {
+    if (existingCustomer.externalId !== user.id) {
+      await client.customers.update({
+        id: existingCustomer.id,
+        customerUpdate: {
+          externalId: user.id
+        }
       })
-      return customer
-    } else {
-      console.error(`[ensurePolarCustomer]: ${JSON.stringify(e)}`)
     }
+    return existingCustomer
+  } else {
+    const customer = await client.customers.create({
+      email: user.email,
+      name: user.name,
+      externalId: user.id
+    })
+    return customer
   }
 }
 
