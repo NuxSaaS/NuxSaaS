@@ -45,7 +45,6 @@ export default defineEventHandler(async (event) => {
           status: 'error',
           message: error instanceof Error ? error.message : 'Unknown error'
         })
-        break
       }
     }
 
@@ -75,7 +74,6 @@ export default defineEventHandler(async (event) => {
           status: 'error',
           message: error instanceof Error ? error.message : 'Unknown error'
         })
-        break
       }
     }
   }
