@@ -1,4 +1,5 @@
 import type { Subscription } from '@better-auth/stripe'
+import type { InferSelectModel } from 'drizzle-orm'
 import { stripe } from '@better-auth/stripe'
 import { eq } from 'drizzle-orm'
 import Stripe from 'stripe'
@@ -6,6 +7,35 @@ import { user as userTable } from '../database/schema'
 import { logAuditEvent } from './auditLogger'
 import { useDB } from './db'
 import { runtimeConfig } from './runtimeConfig'
+
+const createStripeClient = () => {
+  return new Stripe(runtimeConfig.stripeSecretKey!)
+}
+
+export const ensureStripeCustomer = async (user: InferSelectModel<typeof userTable>) => {
+  const client = createStripeClient()
+
+  // Check if customer already exists
+  const customers = await client.customers.list({
+    email: user.email,
+    limit: 1
+  })
+
+  if (customers.data.length > 0) {
+    return customers.data[0]
+  }
+
+  // Create new customer if not exists
+  const customer = await client.customers.create({
+    email: user.email,
+    name: user.name,
+    metadata: {
+      userId: user.id
+    }
+  })
+
+  return customer
+}
 
 const getUserByStripeCustomerId = async (stripeCustomerId: string) => {
   const db = await useDB()
@@ -28,7 +58,7 @@ const addPaymentLog = async (action: string, subscription: Subscription) => {
 }
 
 export const setupStripe = () => stripe({
-  stripeClient: new Stripe(runtimeConfig.stripeSecretKey!),
+  stripeClient: createStripeClient(),
   stripeWebhookSecret: runtimeConfig.stripeWebhookSecret,
   createCustomerOnSignUp: runtimeConfig.public.payment == 'stripe',
   subscription: {

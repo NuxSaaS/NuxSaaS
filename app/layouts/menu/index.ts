@@ -31,6 +31,11 @@ export const getMenus = (t: TranFunction, localePath: LocalePathFunction, appRep
             label: t('menu.dbStats'),
             icon: 'i-lucide-database',
             to: localePath('/admin/maintenance/db-stats')
+          },
+          {
+            label: t('menu.migration'),
+            icon: 'i-lucide-database-zap',
+            to: localePath('/admin/maintenance/migration')
           }
         ]
       }

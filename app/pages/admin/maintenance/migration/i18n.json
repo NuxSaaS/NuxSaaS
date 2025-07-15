@@ -1,0 +1,130 @@
+{
+  "en": {
+    "migration": {
+      "title": "Data Migration",
+      "description": "Manage various data migration operations for system maintenance and data integrity.",
+      "operations": "Available Operations",
+      "paymentCustomers": {
+        "title": "Payment Customers Management",
+        "description": "Ensure all users have corresponding payment provider customer records. This operation will create missing Stripe and Polar customer records for existing users.",
+        "execute": "Execute Ensure Payment Customers",
+        "summary": "Execution Summary",
+        "totalUsers": "Total Users",
+        "stripeSuccess": "Stripe Success",
+        "stripeError": "Stripe Errors",
+        "polarSuccess": "Polar Success",
+        "polarError": "Polar Errors",
+        "stripeResults": "Stripe Results",
+        "polarResults": "Polar Results",
+        "status": {
+          "success": "Success",
+          "error": "Error"
+        }
+      },
+      "common": {
+        "execute": "Execute",
+        "executing": "Executing...",
+        "completed": "Completed",
+        "failed": "Failed",
+        "noResults": "No results to display",
+        "backToOperations": "Back to Operations"
+      }
+    }
+  },
+  "zh-CN": {
+    "migration": {
+      "title": "数据迁移",
+      "description": "管理各种数据迁移操作，用于系统维护和数据完整性。",
+      "operations": "可用操作",
+      "paymentCustomers": {
+        "title": "支付客户管理",
+        "description": "确保所有用户都有对应的支付提供商客户记录。此操作将为现有用户创建缺失的 Stripe 和 Polar 客户记录。",
+        "execute": "执行确保支付客户",
+        "summary": "执行摘要",
+        "totalUsers": "总用户数",
+        "stripeSuccess": "Stripe 成功",
+        "stripeError": "Stripe 错误",
+        "polarSuccess": "Polar 成功",
+        "polarError": "Polar 错误",
+        "stripeResults": "Stripe 结果",
+        "polarResults": "Polar 结果",
+        "status": {
+          "success": "成功",
+          "error": "错误"
+        }
+      },
+      "common": {
+        "execute": "执行",
+        "executing": "执行中...",
+        "completed": "已完成",
+        "failed": "失败",
+        "noResults": "无结果显示",
+        "backToOperations": "返回操作列表"
+      }
+    }
+  },
+  "ja": {
+    "migration": {
+      "title": "データ移行",
+      "description": "システムメンテナンスとデータ整合性のための各種データ移行操作を管理します。",
+      "operations": "利用可能な操作",
+      "paymentCustomers": {
+        "title": "支払い顧客管理",
+        "description": "すべてのユーザーが対応する支払いプロバイダーの顧客記録を持つことを確認します。この操作により、既存のユーザーに不足しているStripeとPolarの顧客記録が作成されます。",
+        "execute": "支払い顧客確保を実行",
+        "summary": "実行概要",
+        "totalUsers": "総ユーザー数",
+        "stripeSuccess": "Stripe 成功",
+        "stripeError": "Stripe エラー",
+        "polarSuccess": "Polar 成功",
+        "polarError": "Polar エラー",
+        "stripeResults": "Stripe 結果",
+        "polarResults": "Polar 結果",
+        "status": {
+          "success": "成功",
+          "error": "エラー"
+        }
+      },
+      "common": {
+        "execute": "実行",
+        "executing": "実行中...",
+        "completed": "完了",
+        "failed": "失敗",
+        "noResults": "表示する結果がありません",
+        "backToOperations": "操作一覧に戻る"
+      }
+    }
+  },
+  "fr": {
+    "migration": {
+      "title": "Migration de Données",
+      "description": "Gérer diverses opérations de migration de données pour la maintenance du système et l'intégrité des données.",
+      "operations": "Opérations Disponibles",
+      "paymentCustomers": {
+        "title": "Gestion des Clients de Paiement",
+        "description": "Assurez-vous que tous les utilisateurs ont des enregistrements de clients correspondants chez les fournisseurs de paiement. Cette opération créera les enregistrements clients Stripe et Polar manquants pour les utilisateurs existants.",
+        "execute": "Exécuter l'Assurance des Clients de Paiement",
+        "summary": "Résumé d'Exécution",
+        "totalUsers": "Total des Utilisateurs",
+        "stripeSuccess": "Stripe Succès",
+        "stripeError": "Erreurs Stripe",
+        "polarSuccess": "Polar Succès",
+        "polarError": "Erreurs Polar",
+        "stripeResults": "Résultats Stripe",
+        "polarResults": "Résultats Polar",
+        "status": {
+          "success": "Succès",
+          "error": "Erreur"
+        }
+      },
+      "common": {
+        "execute": "Exécuter",
+        "executing": "En cours d'exécution...",
+        "completed": "Terminé",
+        "failed": "Échoué",
+        "noResults": "Aucun résultat à afficher",
+        "backToOperations": "Retour aux Opérations"
+      }
+    }
+  }
+}
