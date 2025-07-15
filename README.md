@@ -7,7 +7,7 @@
 <p align="center">
   <a href="https://nuxsaas.com" target="_blank">Website</a> ·
   <a href="https://docs.nuxsaas.com" target="_blank">Documentation</a> ·
-  <a href="https://discord.gg/jJpfnZxy" target="_blank">Discord</a> ·
+  <a href="https://discord.gg/8V4kSu43MW" target="_blank">Discord</a> ·
   <a href="https://www.youtube.com/watch?v=u1H8ChQ5Pl8" target="_blank">Youtube</a> ·
   <a href="https://x.com/cyanhall" target="_blank">
     @Cyanhall
