@@ -30,7 +30,7 @@ const addPaymentLog = async (action: string, subscription: Subscription) => {
 export const setupStripe = () => stripe({
   stripeClient: new Stripe(runtimeConfig.stripeSecretKey!),
   stripeWebhookSecret: runtimeConfig.stripeWebhookSecret,
-  createCustomerOnSignUp: true,
+  createCustomerOnSignUp: runtimeConfig.public.payment == 'stripe',
   subscription: {
     enabled: true,
     plans: [

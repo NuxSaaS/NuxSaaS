@@ -69,7 +69,7 @@ const addPaymentLog = async (hookType: string, data: Customer | Checkout | Benef
 
 export const setupPolar = () => polar({
   client: createPolarClient(),
-  createCustomerOnSignUp: true,
+  createCustomerOnSignUp: runtimeConfig.public.payment == 'polar',
   use: [
     checkout({
       products: [
