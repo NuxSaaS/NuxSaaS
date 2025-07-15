@@ -14,7 +14,8 @@ export const user = pgTable('user', {
   banned: boolean('banned'),
   banReason: text('ban_reason'),
   banExpires: timestamp('ban_expires'),
-  stripeCustomerId: text('stripe_customer_id')
+  stripeCustomerId: text('stripe_customer_id'),
+  polarCustomerId: text('polar_customer_id')
 })
 
 export const account = pgTable('account', {

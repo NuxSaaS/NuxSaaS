@@ -9,10 +9,11 @@ import type { Product } from '@polar-sh/sdk/models/components/product.js'
 import type { Refund } from '@polar-sh/sdk/models/components/refund.js'
 import type { Subscription } from '@polar-sh/sdk/models/components/subscription.js'
 import type { InferSelectModel } from 'drizzle-orm'
-import type { user as userTable } from '../database/schema'
 import { checkout, polar, portal, usage, webhooks } from '@polar-sh/better-auth'
 import { Polar } from '@polar-sh/sdk'
 import { ResourceNotFound } from '@polar-sh/sdk/models/errors/resourcenotfound'
+import { eq } from 'drizzle-orm'
+import { user as userTable } from '../database/schema'
 import { runtimeConfig } from './runtimeConfig'
 
 const createPolarClient = () => {
@@ -53,6 +54,12 @@ const addPaymentLog = async (hookType: string, data: Customer | Checkout | Benef
     })
   } else if (hookType.startsWith('customer.')) {
     const customer = data as Customer
+    if (hookType == 'customer.created' && customer.externalId) {
+      const db = await useDB()
+      await db.update(userTable).set({
+        polarCustomerId: customer.id
+      }).where(eq(userTable.id, customer.externalId))
+    }
     await logAuditEvent({
       userId: customer.externalId || undefined,
       category: 'payment',

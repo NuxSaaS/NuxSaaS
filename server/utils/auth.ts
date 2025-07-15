@@ -31,6 +31,15 @@ const createBetterAuth = () => betterAuth({
       }
     }
   },
+  user: {
+    additionalFields: {
+      polarCustomerId: {
+        type: 'string',
+        required: false,
+        defaultValue: null
+      }
+    }
+  },
   secondaryStorage: cacheClient,
   emailAndPassword: {
     enabled: true,

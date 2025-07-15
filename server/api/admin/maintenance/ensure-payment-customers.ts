@@ -1,11 +1,12 @@
+import { eq } from 'drizzle-orm'
 import { user as userTable } from '~~/server/database/schema'
 import { useDB } from '~~/server/utils/db'
 import { ensurePolarCustomer } from '~~/server/utils/polar'
 import { runtimeConfig } from '~~/server/utils/runtimeConfig'
 import { ensureStripeCustomer } from '~~/server/utils/stripe'
 
-export default defineEventHandler(async () => {
-  const db = await useDB()
+export default defineEventHandler(async (event) => {
+  const db = await useDB(event)
 
   // Get all users from database
   const users = await db.select().from(userTable)
@@ -20,6 +21,13 @@ export default defineEventHandler(async () => {
   for (const user of users) {
     // Ensure Stripe customer if Stripe is enabled
     if (runtimeConfig.public.payment === 'stripe' && runtimeConfig.stripeSecretKey) {
+      if (user.stripeCustomerId) {
+        results.stripeResults.push({
+          userId: user.id,
+          status: 'success'
+        })
+        continue
+      }
       try {
         await ensureStripeCustomer(user)
         results.stripeResults.push({
@@ -38,8 +46,20 @@ export default defineEventHandler(async () => {
 
     // Ensure Polar customer if Polar is enabled
     if (runtimeConfig.public.payment === 'polar' && runtimeConfig.polarAccessToken) {
+      if (user.polarCustomerId) {
+        results.polarResults.push({
+          userId: user.id,
+          status: 'success'
+        })
+        continue
+      }
       try {
-        await ensurePolarCustomer(user)
+        const customer = await ensurePolarCustomer(user)
+        if (customer && customer.externalId) {
+          await db.update(userTable).set({
+            polarCustomerId: customer.id
+          }).where(eq(userTable.id, customer.externalId))
+        }
         results.polarResults.push({
           userId: user.id,
           status: 'success'
