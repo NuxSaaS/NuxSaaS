@@ -23,7 +23,7 @@ const redirectTo = computed(() => {
 })
 
 const schema = z.object({
-  email: z.string().email(t('signIn.errors.invalidEmail')),
+  email: z.email(t('signIn.errors.invalidEmail')),
   password: z.string().min(8, t('signIn.errors.passwordLength', { min: 8 })),
   rememberMe: z.boolean().optional()
 })

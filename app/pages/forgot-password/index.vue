@@ -17,7 +17,7 @@ const toast = useToast()
 const localePath = useLocalePath()
 
 const schema = z.object({
-  email: z.string().email(t('forgotPassword.errors.invalidEmail'))
+  email: z.email(t('forgotPassword.errors.invalidEmail'))
 })
 
 type Schema = zodOutput<typeof schema>
