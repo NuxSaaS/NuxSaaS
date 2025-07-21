@@ -1,5 +1,6 @@
 import type { PgColumn } from 'drizzle-orm/pg-core'
 import { getTableColumns, sql } from 'drizzle-orm'
+import { PgTable } from 'drizzle-orm/pg-core'
 import { z } from 'zod'
 import * as schema from '~~/server/database/schema'
 import { isValidTable } from '~~/server/utils/db'
@@ -48,6 +49,16 @@ export default eventHandler(async (event) => {
   }
 
   const table = schema[tableName]
+  if (!(table instanceof PgTable)) {
+    throw createError(
+      {
+        statusCode: 400,
+        statusMessage: 'Bad Request',
+        data: 'INVALID_TABLE_TYPE',
+        message: 'Invalid Table Name'
+      }
+    )
+  }
   const columns = getTableColumns(table)
 
   if (!(columnName in columns)) {
