@@ -5,7 +5,7 @@ import { generateRuntimeConfig } from './server/utils/runtimeConfig'
 console.log(`Current NODE_ENV: ${process.env.NODE_ENV}`)
 
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
+  compatibilityDate: '2025-07-22',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   modules: [
