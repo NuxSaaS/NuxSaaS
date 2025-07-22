@@ -86,13 +86,17 @@ export function useAuth() {
     sendVerificationEmail: client.sendVerificationEmail,
     errorCodes: client.$ERROR_CODES,
     async signOut({ redirectTo }: { redirectTo?: RouteLocationRaw } = {}) {
-      const res = await client.signOut()
-      session.value = null
-      user.value = null
-      if (redirectTo) {
-        await navigateTo(redirectTo)
-      }
-      return res
+      await client.signOut({
+        fetchOptions: {
+          onSuccess: async () => {
+            session.value = null
+            user.value = null
+            if (redirectTo) {
+              await navigateTo(redirectTo)
+            }
+          }
+        }
+      })
     },
     fetchSession,
     payment,
