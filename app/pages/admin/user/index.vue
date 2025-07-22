@@ -37,7 +37,7 @@ const filters: AdminTableFilter[] = reactive([
 
 const { refresh } = useAdminTable()
 
-const getActionItems = (row: Row<UserWithRole>) => {
+const getActionItems = (row: Row<User>) => {
   const user = row.original
   return [
     {
@@ -83,7 +83,7 @@ const getActionItems = (row: Row<UserWithRole>) => {
   ]
 }
 
-const getRoleDropdownItems = (original: UserWithRole) => {
+const getRoleDropdownItems = (original: User) => {
   const roles = ['user', 'admin'] as const
   return roles.map((role) => {
     return {
@@ -105,7 +105,7 @@ const getRoleDropdownItems = (original: UserWithRole) => {
   })
 }
 
-const columns: AdminTableColumn<UserWithRole>[] = [
+const columns: AdminTableColumn<User>[] = [
   {
     accessorKey: 'id',
     header: 'ID'
@@ -155,9 +155,9 @@ const fetchRoleCount = async (filter: FilterCondition[]) => {
   })
 }
 
-const fetchData: FetchDataFn<UserWithRole> = async ({ page, limit, sort, filter }) => {
+const fetchData: FetchDataFn<User> = async ({ page, limit, sort, filter }) => {
   fetchRoleCount(filter)
-  const result = await $fetch<PageData<UserWithRole>>('/api/admin/list/user', {
+  const result = await $fetch<PageData<User>>('/api/admin/list/user', {
     query: {
       page,
       limit,
