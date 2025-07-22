@@ -4,7 +4,6 @@ import type { CellContext, RowData } from '@tanstack/vue-table'
 
 export type { FormSubmitEvent, NavigationMenuItem, TableData } from '@nuxt/ui'
 export type { Row } from '@tanstack/vue-table'
-export type { UserWithRole } from 'better-auth/plugins'
 export { z } from 'zod/v4'
 export type { output as zodOutput } from 'zod/v4'
 export { locales as zodLocales } from 'zod/v4'

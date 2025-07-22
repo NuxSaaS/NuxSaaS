@@ -1,5 +1,4 @@
 import type { Subscription } from '@better-auth/stripe'
-import type { InferSelectModel } from 'drizzle-orm'
 import { stripe } from '@better-auth/stripe'
 import { eq } from 'drizzle-orm'
 import Stripe from 'stripe'
@@ -12,7 +11,7 @@ const createStripeClient = () => {
   return new Stripe(runtimeConfig.stripeSecretKey!)
 }
 
-export const ensureStripeCustomer = async (user: InferSelectModel<typeof userTable>) => {
+export const ensureStripeCustomer = async (user: User) => {
   const client = createStripeClient()
 
   // Check if customer already exists

@@ -8,7 +8,6 @@ import type { Organization } from '@polar-sh/sdk/models/components/organization.
 import type { Product } from '@polar-sh/sdk/models/components/product.js'
 import type { Refund } from '@polar-sh/sdk/models/components/refund.js'
 import type { Subscription } from '@polar-sh/sdk/models/components/subscription.js'
-import type { InferSelectModel } from 'drizzle-orm'
 import { checkout, polar, portal, usage, webhooks } from '@polar-sh/better-auth'
 import { Polar } from '@polar-sh/sdk'
 import { eq } from 'drizzle-orm'
@@ -22,7 +21,7 @@ const createPolarClient = () => {
   })
 }
 
-export const ensurePolarCustomer = async (user: InferSelectModel<typeof userTable>) => {
+export const ensurePolarCustomer = async (user: User) => {
   const client = createPolarClient()
   const { result: existingCustomers } = await client.customers.list({ email: user.email })
   const existingCustomer = existingCustomers.items[0]

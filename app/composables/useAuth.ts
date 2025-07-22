@@ -7,7 +7,7 @@ import type {
 import type { RouteLocationRaw } from 'vue-router'
 import { stripeClient } from '@better-auth/stripe/client'
 import { polarClient } from '@polar-sh/better-auth'
-import { adminClient } from 'better-auth/client/plugins'
+import { adminClient, inferAdditionalFields } from 'better-auth/client/plugins'
 import { createAuthClient } from 'better-auth/vue'
 
 export function useAuth() {
@@ -21,6 +21,13 @@ export function useAuth() {
       headers
     },
     plugins: [
+      inferAdditionalFields({
+        user: {
+          polarCustomerId: {
+            type: 'string'
+          }
+        }
+      }),
       adminClient(),
       polarClient(),
       stripeClient({
@@ -30,7 +37,7 @@ export function useAuth() {
   })
 
   const session = useState<InferSessionFromClient<ClientOptions> | null>('auth:session', () => null)
-  const user = useState<UserWithRole | null>('auth:user', () => null)
+  const user = useState<User | null>('auth:user', () => null)
   const subscriptions = useState<Subscription[]>('auth:subscriptions', () => [])
   const polarState = useState<CustomerState | null>('auth:polarState', () => null)
   const sessionFetching = import.meta.server ? ref(false) : useState('auth:sessionFetching', () => false)
@@ -42,7 +49,18 @@ export function useAuth() {
     sessionFetching.value = true
     const { data } = await client.useSession(useFetch)
     session.value = data.value?.session || null
-    user.value = data.value?.user ? { ...data.value.user, role: data.value.user.role ?? undefined } : null
+
+    const userDefaults = {
+      image: null,
+      role: null,
+      banReason: null,
+      banned: null,
+      banExpires: null,
+      stripeCustomerId: null
+    }
+    user.value = data.value?.user
+      ? Object.assign({}, userDefaults, data.value.user)
+      : null
     subscriptions.value = []
     if (user.value) {
       if (payment == 'stripe') {
