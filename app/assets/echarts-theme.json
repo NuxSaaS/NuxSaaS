@@ -1,0 +1,467 @@
+{
+  "color": [
+    "var(--ui-primary)",
+    "var(--ui-secondary)"
+  ],
+
+  "backgroundColor": "transparent",
+
+  "textStyle": {
+    "color": "var(--ui-text)"
+  },
+
+  "title": {
+    "textStyle": {
+      "color": "var(--ui-text-highlighted)"
+    },
+
+    "subtextStyle": {
+      "color": "var(--ui-text-muted)"
+    }
+  },
+
+  "line": {
+    "itemStyle": {
+      "borderWidth": 1,
+      "borderColor": "var(--ui-border)"
+    },
+
+    "lineStyle": {
+      "width": 1.5,
+      "color": "var(--ui-primary)"
+    },
+
+    "symbolSize": 4,
+    "symbol": "emptyCircle",
+    "smooth": false
+  },
+
+  "radar": {
+    "itemStyle": {
+      "borderWidth": 1,
+      "borderColor": "var(--ui-border)"
+    },
+
+    "lineStyle": {
+      "width": 1.5,
+      "color": "var(--ui-primary)"
+    },
+
+    "symbolSize": 4,
+    "symbol": "emptyCircle",
+    "smooth": false
+  },
+
+  "bar": {
+    "itemStyle": {
+      "barBorderWidth": 0,
+      "barBorderColor": "var(--ui-border)"
+    }
+  },
+
+  "pie": {
+    "itemStyle": {
+      "borderWidth": 0,
+      "borderColor": "var(--ui-border)"
+    }
+  },
+
+  "scatter": {
+    "itemStyle": {
+      "borderWidth": 0,
+      "borderColor": "var(--ui-border)"
+    }
+  },
+
+  "boxplot": {
+    "itemStyle": {
+      "borderWidth": 0,
+      "borderColor": "var(--ui-border)"
+    }
+  },
+
+  "parallel": {
+    "itemStyle": {
+      "borderWidth": 0,
+      "borderColor": "var(--ui-border)"
+    }
+  },
+
+  "sankey": {
+    "itemStyle": {
+      "borderWidth": 0,
+      "borderColor": "var(--ui-border)"
+    }
+  },
+
+  "funnel": {
+    "itemStyle": {
+      "borderWidth": 0,
+      "borderColor": "var(--ui-border)"
+    }
+  },
+
+  "gauge": {
+    "itemStyle": {
+      "borderWidth": 0,
+      "borderColor": "var(--ui-border)"
+    }
+  },
+
+  "candlestick": {
+    "itemStyle": {
+      "color": "var(--ui-error)",
+      "color0": "var(--ui-success)",
+      "borderColor": "var(--ui-error)",
+      "borderColor0": "var(--ui-success)",
+      "borderWidth": 1
+    }
+  },
+
+  "graph": {
+    "itemStyle": {
+      "borderWidth": 0,
+      "borderColor": "var(--ui-border)"
+    },
+
+    "lineStyle": {
+      "width": 1,
+      "color": "var(--ui-border-accented)"
+    },
+
+    "symbolSize": 4,
+    "symbol": "emptyCircle",
+    "smooth": false,
+
+    "color": [
+      "var(--ui-primary)",
+      "var(--ui-secondary)"
+    ],
+
+    "label": {
+      "color": "var(--ui-text)"
+    }
+  },
+
+  "map": {
+    "itemStyle": {
+      "areaColor": "var(--ui-bg-elevated)",
+      "borderColor": "var(--ui-border)",
+      "borderWidth": 0.5
+    },
+
+    "label": {
+      "color": "var(--ui-text)"
+    },
+
+    "emphasis": {
+      "itemStyle": {
+        "areaColor": "var(--ui-color-warning-200)",
+        "borderColor": "var(--ui-border-accented)",
+        "borderWidth": 1
+      },
+
+      "label": {
+        "color": "var(--ui-text-highlighted)"
+      }
+    }
+  },
+
+  "geo": {
+    "itemStyle": {
+      "areaColor": "var(--ui-bg-elevated)",
+      "borderColor": "var(--ui-border)",
+      "borderWidth": 0.5
+    },
+
+    "label": {
+      "color": "var(--ui-text)"
+    },
+
+    "emphasis": {
+      "itemStyle": {
+        "areaColor": "var(--ui-color-warning-200)",
+        "borderColor": "var(--ui-border-accented)",
+        "borderWidth": 1
+      },
+
+      "label": {
+        "color": "var(--ui-text-highlighted)"
+      }
+    }
+  },
+
+  "categoryAxis": {
+    "axisLine": {
+      "show": true,
+
+      "lineStyle": {
+        "color": "var(--ui-border)"
+      }
+    },
+
+    "axisTick": {
+      "show": true,
+
+      "lineStyle": {
+        "color": "var(--ui-border)"
+      }
+    },
+
+    "axisLabel": {
+      "show": true,
+      "color": "var(--ui-text-muted)"
+    },
+
+    "splitLine": {
+      "show": false,
+
+      "lineStyle": {
+        "color": ["var(--ui-border-muted)"],
+        "opacity": 0.5
+      }
+    },
+
+    "splitArea": {
+      "show": false,
+
+      "areaStyle": {
+        "color": [
+          "var(--ui-bg-muted)",
+          "var(--ui-bg-elevated)"
+        ]
+      }
+    }
+  },
+
+  "valueAxis": {
+    "axisLine": {
+      "show": false,
+
+      "lineStyle": {
+        "color": "var(--ui-border)"
+      }
+    },
+
+    "axisTick": {
+      "show": false,
+
+      "lineStyle": {
+        "color": "var(--ui-border)"
+      }
+    },
+
+    "axisLabel": {
+      "show": true,
+      "color": "var(--ui-text-muted)"
+    },
+
+    "splitLine": {
+      "show": true,
+
+      "lineStyle": {
+        "color": ["var(--ui-border-muted)"],
+        "opacity": 0.5
+      }
+    },
+
+    "splitArea": {
+      "show": false,
+
+      "areaStyle": {
+        "color": [
+          "var(--ui-bg-muted)",
+          "var(--ui-bg-elevated)"
+        ]
+      }
+    }
+  },
+
+  "logAxis": {
+    "axisLine": {
+      "show": false,
+
+      "lineStyle": {
+        "color": "var(--ui-border)"
+      }
+    },
+
+    "axisTick": {
+      "show": false,
+
+      "lineStyle": {
+        "color": "var(--ui-border)"
+      }
+    },
+
+    "axisLabel": {
+      "show": true,
+      "color": "var(--ui-text-muted)"
+    },
+
+    "splitLine": {
+      "show": true,
+
+      "lineStyle": {
+        "color": ["var(--ui-border-muted)"],
+        "opacity": 0.5
+      }
+    },
+
+    "splitArea": {
+      "show": false,
+
+      "areaStyle": {
+        "color": [
+          "var(--ui-bg-muted)",
+          "var(--ui-bg-elevated)"
+        ]
+      }
+    }
+  },
+
+  "timeAxis": {
+    "axisLine": {
+      "show": true,
+
+      "lineStyle": {
+        "color": "var(--ui-border)"
+      }
+    },
+
+    "axisTick": {
+      "show": true,
+
+      "lineStyle": {
+        "color": "var(--ui-border)"
+      }
+    },
+
+    "axisLabel": {
+      "show": true,
+      "color": "var(--ui-text-muted)"
+    },
+
+    "splitLine": {
+      "show": false,
+
+      "lineStyle": {
+        "color": ["var(--ui-border-muted)"],
+        "opacity": 0.5
+      }
+    },
+
+    "splitArea": {
+      "show": false,
+
+      "areaStyle": {
+        "color": [
+          "var(--ui-bg-muted)",
+          "var(--ui-bg-elevated)"
+        ]
+      }
+    }
+  },
+
+  "toolbox": {
+    "iconStyle": {
+      "borderColor": "var(--ui-text-muted)"
+    },
+
+    "emphasis": {
+      "iconStyle": {
+        "borderColor": "var(--ui-text)"
+      }
+    }
+  },
+
+  "legend": {
+    "textStyle": {
+      "color": "var(--ui-text)"
+    }
+  },
+
+  "tooltip": {
+    "axisPointer": {
+      "lineStyle": {
+        "color": "var(--ui-border-accented)",
+        "width": 1
+      },
+
+      "crossStyle": {
+        "color": "var(--ui-border-accented)",
+        "width": 1
+      }
+    }
+  },
+
+  "timeline": {
+    "lineStyle": {
+      "color": "var(--ui-color-primary-300)",
+      "width": 1.5
+    },
+
+    "itemStyle": {
+      "color": "var(--ui-color-primary-400)",
+      "borderWidth": 1
+    },
+
+    "controlStyle": {
+      "color": "var(--ui-color-primary-400)",
+      "borderColor": "var(--ui-color-primary-400)",
+      "borderWidth": 1
+    },
+
+    "checkpointStyle": {
+      "color": "var(--ui-primary)",
+      "borderColor": "var(--ui-bg)"
+    },
+
+    "label": {
+      "color": "var(--ui-color-primary-400)"
+    },
+
+    "emphasis": {
+      "itemStyle": {
+        "color": "var(--ui-bg)"
+      },
+
+      "controlStyle": {
+        "color": "var(--ui-color-primary-400)",
+        "borderColor": "var(--ui-color-primary-400)",
+        "borderWidth": 1
+      },
+
+      "label": {
+        "color": "var(--ui-color-primary-400)"
+      }
+    }
+  },
+
+  "visualMap": {
+    "color": [
+      "var(--ui-error)",
+      "var(--ui-warning)",
+      "var(--ui-success)"
+    ]
+  },
+
+  "dataZoom": {
+    "handleSize": "undefined%",
+    "textStyle": {
+      "color": "var(--ui-text)"
+    }
+  },
+
+  "markPoint": {
+    "label": {
+      "color": "var(--ui-text)"
+    },
+
+    "emphasis": {
+      "label": {
+        "color": "var(--ui-text-highlighted)"
+      }
+    }
+  }
+}

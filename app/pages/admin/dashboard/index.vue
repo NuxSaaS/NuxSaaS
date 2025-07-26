@@ -2,7 +2,9 @@
 
 <script setup lang="ts">
 const { t } = useI18n()
-const colorMode = useColorMode()
+
+const areaChartLoading = ref(true)
+const barChartLoading = ref(true)
 
 const stats = ref([
   {
@@ -54,31 +56,15 @@ const AreaChartData = [
 
 // Area Chart ECharts Option
 const areaChartOption = computed(() => ({
-  title: {
-    text: '',
-    textStyle: {
-      color: colorMode.value === 'dark' ? '#f9fafb' : '#374151'
-    }
-  },
   tooltip: {
     trigger: 'axis',
     axisPointer: {
       type: 'cross'
-    },
-    backgroundColor: colorMode.value === 'dark' ? '#374151' : '#ffffff',
-    borderColor: colorMode.value === 'dark' ? '#4b5563' : '#e5e7eb',
-    textStyle: {
-      color: colorMode.value === 'dark' ? '#f9fafb' : '#374151'
     }
   },
   legend: {
     data: ['Desktop', 'Mobile'],
-    top: 10,
-    textStyle: {
-      color: colorMode.value === 'dark' ? '#e5e7eb' : '#374151',
-      fontSize: 12,
-      fontWeight: 500
-    }
+    top: 10
   },
   grid: {
     left: '3%',
@@ -92,28 +78,22 @@ const areaChartOption = computed(() => ({
     data: AreaChartData.map(item => item.date),
     axisLine: {
       lineStyle: {
-        color: colorMode.value === 'dark' ? '#4b5563' : '#e5e7eb',
-        width: 1
+        color: '#e5e7eb'
       }
     },
     axisLabel: {
-      color: colorMode.value === 'dark' ? '#9ca3af' : '#6b7280'
+      color: '#6b7280'
     }
   },
   yAxis: {
     type: 'value',
     splitLine: {
       lineStyle: {
-        color: colorMode.value === 'dark' ? '#374151' : '#f3f4f6',
-        width: 1,
-        type: 'dashed'
+        color: '#f3f4f6'
       }
     },
     axisLabel: {
-      color: colorMode.value === 'dark' ? '#9ca3af' : '#6b7280'
-    },
-    axisLine: {
-      show: false
+      color: '#6b7280'
     }
   },
   series: [
@@ -186,31 +166,15 @@ const areaChartOption = computed(() => ({
 
 // Bar Chart ECharts Option
 const barChartOption = computed(() => ({
-  title: {
-    text: '',
-    textStyle: {
-      color: colorMode.value === 'dark' ? '#f9fafb' : '#374151'
-    }
-  },
   tooltip: {
     trigger: 'axis',
     axisPointer: {
       type: 'shadow'
-    },
-    backgroundColor: colorMode.value === 'dark' ? '#374151' : '#ffffff',
-    borderColor: colorMode.value === 'dark' ? '#4b5563' : '#e5e7eb',
-    textStyle: {
-      color: colorMode.value === 'dark' ? '#f9fafb' : '#374151'
     }
   },
   legend: {
     data: ['Desktop', 'Mobile'],
-    top: 10,
-    textStyle: {
-      color: colorMode.value === 'dark' ? '#e5e7eb' : '#374151',
-      fontSize: 12,
-      fontWeight: 500
-    }
+    top: 10
   },
   grid: {
     left: '3%',
@@ -223,28 +187,22 @@ const barChartOption = computed(() => ({
     data: RevenueData.map(item => item.month),
     axisLine: {
       lineStyle: {
-        color: colorMode.value === 'dark' ? '#4b5563' : '#e5e7eb',
-        width: 1
+        color: '#e5e7eb'
       }
     },
     axisLabel: {
-      color: colorMode.value === 'dark' ? '#9ca3af' : '#6b7280'
+      color: '#6b7280'
     }
   },
   xAxis: {
     type: 'value',
     splitLine: {
       lineStyle: {
-        color: colorMode.value === 'dark' ? '#374151' : '#f3f4f6',
-        width: 1,
-        type: 'dashed'
+        color: '#f3f4f6'
       }
     },
     axisLabel: {
-      color: colorMode.value === 'dark' ? '#9ca3af' : '#6b7280'
-    },
-    axisLine: {
-      show: false
+      color: '#6b7280'
     }
   },
   series: [
@@ -270,6 +228,14 @@ const barChartOption = computed(() => ({
     }
   ]
 }))
+
+function onAreaChartRendered() {
+  areaChartLoading.value = false
+}
+
+function onBarChartRendered() {
+  barChartLoading.value = false
+}
 </script>
 
 <template>
@@ -310,16 +276,42 @@ const barChartOption = computed(() => ({
 
       <!-- Charts -->
       <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <UCard>
+        <UCard class="relative">
+          <div
+            v-if="areaChartLoading"
+            class="absolute inset-0 z-10 flex items-center justify-center bg-white/80 dark:bg-gray-900/80"
+          >
+            <div class="flex items-center space-x-2">
+              <Icon
+                name="lucide:loader-2"
+                class="h-5 w-5 animate-spin text-primary"
+              />
+            </div>
+          </div>
           <VChart
             :option="areaChartOption"
+            :autoresize="true"
             style="height: 310px; width: 100%"
+            @rendered="onAreaChartRendered"
           />
         </UCard>
-        <UCard>
+        <UCard class="relative">
+          <div
+            v-if="barChartLoading"
+            class="absolute inset-0 z-10 flex items-center justify-center bg-white/80 dark:bg-gray-900/80"
+          >
+            <div class="flex items-center space-x-2">
+              <Icon
+                name="lucide:loader-2"
+                class="h-5 w-5 animate-spin text-primary"
+              />
+            </div>
+          </div>
           <VChart
             :option="barChartOption"
+            :autoresize="true"
             style="height: 310px; width: 100%"
+            @rendered="onBarChartRendered"
           />
         </UCard>
       </div>
