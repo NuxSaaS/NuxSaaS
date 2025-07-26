@@ -257,7 +257,7 @@
     },
 
     "splitLine": {
-      "show": true,
+      "show": false,
 
       "lineStyle": {
         "color": ["var(--ui-border-muted)"],
