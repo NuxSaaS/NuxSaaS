@@ -2,6 +2,7 @@
 
 <script setup lang="ts">
 const { t } = useI18n()
+const colorMode = useColorMode()
 
 const stats = ref([
   {
@@ -56,18 +57,28 @@ const areaChartOption = computed(() => ({
   title: {
     text: '',
     textStyle: {
-      color: '#374151'
+      color: colorMode.value === 'dark' ? '#f9fafb' : '#374151'
     }
   },
   tooltip: {
     trigger: 'axis',
     axisPointer: {
       type: 'cross'
+    },
+    backgroundColor: colorMode.value === 'dark' ? '#374151' : '#ffffff',
+    borderColor: colorMode.value === 'dark' ? '#4b5563' : '#e5e7eb',
+    textStyle: {
+      color: colorMode.value === 'dark' ? '#f9fafb' : '#374151'
     }
   },
   legend: {
     data: ['Desktop', 'Mobile'],
-    top: 10
+    top: 10,
+    textStyle: {
+      color: colorMode.value === 'dark' ? '#e5e7eb' : '#374151',
+      fontSize: 12,
+      fontWeight: 500
+    }
   },
   grid: {
     left: '3%',
@@ -81,22 +92,28 @@ const areaChartOption = computed(() => ({
     data: AreaChartData.map(item => item.date),
     axisLine: {
       lineStyle: {
-        color: '#e5e7eb'
+        color: colorMode.value === 'dark' ? '#4b5563' : '#e5e7eb',
+        width: 1
       }
     },
     axisLabel: {
-      color: '#6b7280'
+      color: colorMode.value === 'dark' ? '#9ca3af' : '#6b7280'
     }
   },
   yAxis: {
     type: 'value',
     splitLine: {
       lineStyle: {
-        color: '#f3f4f6'
+        color: colorMode.value === 'dark' ? '#374151' : '#f3f4f6',
+        width: 1,
+        type: 'dashed'
       }
     },
     axisLabel: {
-      color: '#6b7280'
+      color: colorMode.value === 'dark' ? '#9ca3af' : '#6b7280'
+    },
+    axisLine: {
+      show: false
     }
   },
   series: [
@@ -172,18 +189,28 @@ const barChartOption = computed(() => ({
   title: {
     text: '',
     textStyle: {
-      color: '#374151'
+      color: colorMode.value === 'dark' ? '#f9fafb' : '#374151'
     }
   },
   tooltip: {
     trigger: 'axis',
     axisPointer: {
       type: 'shadow'
+    },
+    backgroundColor: colorMode.value === 'dark' ? '#374151' : '#ffffff',
+    borderColor: colorMode.value === 'dark' ? '#4b5563' : '#e5e7eb',
+    textStyle: {
+      color: colorMode.value === 'dark' ? '#f9fafb' : '#374151'
     }
   },
   legend: {
     data: ['Desktop', 'Mobile'],
-    top: 10
+    top: 10,
+    textStyle: {
+      color: colorMode.value === 'dark' ? '#e5e7eb' : '#374151',
+      fontSize: 12,
+      fontWeight: 500
+    }
   },
   grid: {
     left: '3%',
@@ -196,22 +223,28 @@ const barChartOption = computed(() => ({
     data: RevenueData.map(item => item.month),
     axisLine: {
       lineStyle: {
-        color: '#e5e7eb'
+        color: colorMode.value === 'dark' ? '#4b5563' : '#e5e7eb',
+        width: 1
       }
     },
     axisLabel: {
-      color: '#6b7280'
+      color: colorMode.value === 'dark' ? '#9ca3af' : '#6b7280'
     }
   },
   xAxis: {
     type: 'value',
     splitLine: {
       lineStyle: {
-        color: '#f3f4f6'
+        color: colorMode.value === 'dark' ? '#374151' : '#f3f4f6',
+        width: 1,
+        type: 'dashed'
       }
     },
     axisLabel: {
-      color: '#6b7280'
+      color: colorMode.value === 'dark' ? '#9ca3af' : '#6b7280'
+    },
+    axisLine: {
+      show: false
     }
   },
   series: [
