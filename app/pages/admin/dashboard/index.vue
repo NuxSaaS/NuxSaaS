@@ -42,15 +42,6 @@ const RevenueData = [
   { month: 'May', desktop: 209, mobile: 130 },
   { month: 'June', desktop: 214, mobile: 140 }
 ]
-const RevenueCategoriesMultple = {
-  desktop: { name: 'Desktop', color: '#029752' },
-  mobile: { name: 'Mobile', color: '#4ade80' }
-}
-
-const categories: Record<string, BulletLegendItemInterface> = {
-  desktop: { name: 'Desktop', color: '#029752' },
-  mobile: { name: 'Mobile', color: '#4ade80' }
-}
 
 const AreaChartData = [
   { date: '2024-04-01', desktop: 222, mobile: 150 },
@@ -60,7 +51,192 @@ const AreaChartData = [
   { date: '2024-04-05', desktop: 240, mobile: 290 }
 ]
 
-const xFormatter = (i: number): string | number => AreaChartData[i]?.date || ''
+// Area Chart ECharts Option
+const areaChartOption = computed(() => ({
+  title: {
+    text: '',
+    textStyle: {
+      color: '#374151'
+    }
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross'
+    }
+  },
+  legend: {
+    data: ['Desktop', 'Mobile'],
+    top: 10
+  },
+  grid: {
+    left: '3%',
+    right: '8%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: {
+    type: 'category',
+    boundaryGap: false,
+    data: AreaChartData.map(item => item.date),
+    axisLine: {
+      lineStyle: {
+        color: '#e5e7eb'
+      }
+    },
+    axisLabel: {
+      color: '#6b7280'
+    }
+  },
+  yAxis: {
+    type: 'value',
+    splitLine: {
+      lineStyle: {
+        color: '#f3f4f6'
+      }
+    },
+    axisLabel: {
+      color: '#6b7280'
+    }
+  },
+  series: [
+    {
+      name: 'Desktop',
+      type: 'line',
+      smooth: true,
+      stack: 'Total',
+      areaStyle: {
+        color: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [
+            {
+              offset: 0,
+              color: 'rgba(2, 151, 82, 0.8)'
+            },
+            {
+              offset: 1,
+              color: 'rgba(2, 151, 82, 0.1)'
+            }
+          ]
+        }
+      },
+      lineStyle: {
+        color: '#029752'
+      },
+      itemStyle: {
+        color: '#029752'
+      },
+      data: AreaChartData.map(item => item.desktop)
+    },
+    {
+      name: 'Mobile',
+      type: 'line',
+      smooth: true,
+      stack: 'Total',
+      areaStyle: {
+        color: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [
+            {
+              offset: 0,
+              color: 'rgba(74, 222, 128, 0.8)'
+            },
+            {
+              offset: 1,
+              color: 'rgba(74, 222, 128, 0.1)'
+            }
+          ]
+        }
+      },
+      lineStyle: {
+        color: '#4ade80'
+      },
+      itemStyle: {
+        color: '#4ade80'
+      },
+      data: AreaChartData.map(item => item.mobile)
+    }
+  ]
+}))
+
+// Bar Chart ECharts Option
+const barChartOption = computed(() => ({
+  title: {
+    text: '',
+    textStyle: {
+      color: '#374151'
+    }
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  legend: {
+    data: ['Desktop', 'Mobile'],
+    top: 10
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  yAxis: {
+    type: 'category',
+    data: RevenueData.map(item => item.month),
+    axisLine: {
+      lineStyle: {
+        color: '#e5e7eb'
+      }
+    },
+    axisLabel: {
+      color: '#6b7280'
+    }
+  },
+  xAxis: {
+    type: 'value',
+    splitLine: {
+      lineStyle: {
+        color: '#f3f4f6'
+      }
+    },
+    axisLabel: {
+      color: '#6b7280'
+    }
+  },
+  series: [
+    {
+      name: 'Desktop',
+      type: 'bar',
+      stack: 'total',
+      itemStyle: {
+        color: '#029752',
+        borderRadius: [0, 4, 4, 0]
+      },
+      data: RevenueData.map(item => item.desktop)
+    },
+    {
+      name: 'Mobile',
+      type: 'bar',
+      stack: 'total',
+      itemStyle: {
+        color: '#4ade80',
+        borderRadius: [0, 4, 4, 0]
+      },
+      data: RevenueData.map(item => item.mobile)
+    }
+  ]
+}))
 </script>
 
 <template>
@@ -102,32 +278,15 @@ const xFormatter = (i: number): string | number => AreaChartData[i]?.date || ''
       <!-- Charts -->
       <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <UCard>
-          <AreaChart
-            :data="AreaChartData"
-            :height="250"
-            :categories="categories"
-            :y-num-ticks="4"
-            :x-num-ticks="7"
-            :grid-line-y="true"
-            legend-poisition="top"
-            :x-formatter="xFormatter"
+          <VChart
+            :option="areaChartOption"
+            style="height: 310px; width: 100%"
           />
         </UCard>
         <UCard>
-          <BarChart
-            :data="RevenueData"
-            :stacked="true"
-            :height="250"
-            :categories="RevenueCategoriesMultple"
-            :y-axis="['desktop', 'mobile']"
-            :group-padding="0"
-            :bar-padding="0.2"
-            :x-num-ticks="6"
-            :radius="4"
-            :orientation="Orientation.Horizontal"
-            :x-formatter="(i) => i"
-            :y-formatter="(i: number): string => `${RevenueData[i]!.month}`"
-            :legend-position="LegendPosition.Top"
+          <VChart
+            :option="barChartOption"
+            style="height: 310px; width: 100%"
           />
         </UCard>
       </div>
