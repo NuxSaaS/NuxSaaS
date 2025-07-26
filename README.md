@@ -105,7 +105,7 @@ This project is built upon these amazing open source projects:
 - [Better Auth](https://github.com/better-auth/better-auth) -The most comprehensive authentication framework for TypeScript
 - [Drizzle ORM](https://github.com/drizzle-team/drizzle-orm) - TypeScript ORM
 - [TailwindCSS](https://tailwindcss.com) - Utility-first CSS framework
-- [nuxt-charts](https://github.com/dennisadriaans/vue-chrts): Nuxt module for Unovis
+- [nuxt-echarts](https://github.com/kingyue737/nuxt-echarts): Nuxt module for Apache ECharts™
 - [nuxthub-better-auth](https://github.com/atinux/nuxthub-better-auth): A demo of using Better Auth with Nuxt
 
 ## 📜 License
