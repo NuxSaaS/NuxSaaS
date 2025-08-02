@@ -127,5 +127,8 @@ export default defineNuxtConfig({
     rollupConfig: {
       external: process.env.NUXT_NITRO_PRESET != 'node-server' ? ['pg-native'] : undefined
     }
+  },
+  build: {
+    transpile: ['zod', '@polar-sh']
   }
 })
