@@ -59,7 +59,8 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   const { error } = await auth.signUp.email({
     name: event.data.name,
     email: event.data.email,
-    password: event.data.password
+    password: event.data.password,
+    polarCustomerId: ''
   })
   if (error) {
     toast.add({
