@@ -110,7 +110,9 @@ export function useAuth() {
             session.value = null
             user.value = null
             if (redirectTo) {
-              await navigateTo(redirectTo)
+              await reloadNuxtApp({
+                path: redirectTo.toString()
+              })
             }
           }
         }
