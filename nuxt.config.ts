@@ -128,7 +128,9 @@ export default defineNuxtConfig({
       external: process.env.NUXT_NITRO_PRESET != 'node-server' ? ['pg-native'] : undefined
     }
   },
-  build: {
-    transpile: ['zod', '@polar-sh']
+  $production: {
+    build: {
+      transpile: ['zod', '@polar-sh']
+    }
   }
 })
