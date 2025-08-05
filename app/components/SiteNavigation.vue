@@ -27,7 +27,7 @@ const navigation = [
         <NuxtLink
           v-if="!item.external"
           :to="item.to"
-          class="text-sm font-medium text-gray-700 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
+          class="text-sm font-medium text-neutral-700 hover:text-primary-500 dark:text-neutral-300 dark:hover:text-primary-400"
         >
           {{ item.label }}
         </NuxtLink>
@@ -36,7 +36,7 @@ const navigation = [
           :href="item.to"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-sm font-medium text-gray-700 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
+          class="text-sm font-medium text-neutral-700 hover:text-primary-500 dark:text-neutral-300 dark:hover:text-primary-400"
         >
           {{ item.label }}
         </a>

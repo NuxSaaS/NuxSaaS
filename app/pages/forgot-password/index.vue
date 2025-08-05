@@ -62,7 +62,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
           <h1 class="text-xl font-semibold">
             {{ t('forgotPassword.title') }}
           </h1>
-          <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">
+          <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-2">
             {{ t('forgotPassword.description') }}
           </p>
         </div>

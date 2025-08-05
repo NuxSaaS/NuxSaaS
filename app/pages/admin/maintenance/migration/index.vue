@@ -89,7 +89,7 @@ const getCurrentOperation = () => {
           </div>
         </template>
 
-        <p class="text-gray-600 dark:text-gray-400">
+        <p class="text-neutral-600 dark:text-neutral-400">
           {{ t('migration.description') }}
         </p>
       </UCard>
@@ -121,10 +121,10 @@ const getCurrentOperation = () => {
                   </div>
                 </div>
                 <div class="flex-1 min-w-0">
-                  <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
                     {{ operation.title }}
                   </h3>
-                  <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                  <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
                     {{ operation.description }}
                   </p>
                   <div class="mt-3">
@@ -165,7 +165,7 @@ const getCurrentOperation = () => {
           </template>
 
           <div class="space-y-4">
-            <p class="text-gray-600 dark:text-gray-400">
+            <p class="text-neutral-600 dark:text-neutral-400">
               {{ getCurrentOperation()?.description }}
             </p>
 
@@ -217,7 +217,7 @@ const getCurrentOperation = () => {
                 <div class="text-2xl font-bold">
                   {{ result.summary.totalUsers }}
                 </div>
-                <div class="text-sm text-gray-500 dark:text-gray-400">
+                <div class="text-sm text-neutral-500 dark:text-neutral-400">
                   {{ t('migration.paymentCustomers.totalUsers') }}
                 </div>
               </div>
@@ -226,7 +226,7 @@ const getCurrentOperation = () => {
                 <div class="text-2xl font-bold text-green-600">
                   {{ result.summary.stripeSuccessCount }}
                 </div>
-                <div class="text-sm text-gray-500 dark:text-gray-400">
+                <div class="text-sm text-neutral-500 dark:text-neutral-400">
                   {{ t('migration.paymentCustomers.stripeSuccess') }}
                 </div>
               </div>
@@ -235,7 +235,7 @@ const getCurrentOperation = () => {
                 <div class="text-2xl font-bold text-red-600">
                   {{ result.summary.stripeErrorCount }}
                 </div>
-                <div class="text-sm text-gray-500 dark:text-gray-400">
+                <div class="text-sm text-neutral-500 dark:text-neutral-400">
                   {{ t('migration.paymentCustomers.stripeError') }}
                 </div>
               </div>
@@ -244,7 +244,7 @@ const getCurrentOperation = () => {
                 <div class="text-2xl font-bold text-green-600">
                   {{ result.summary.polarSuccessCount }}
                 </div>
-                <div class="text-sm text-gray-500 dark:text-gray-400">
+                <div class="text-sm text-neutral-500 dark:text-neutral-400">
                   {{ t('migration.paymentCustomers.polarSuccess') }}
                 </div>
               </div>
@@ -253,7 +253,7 @@ const getCurrentOperation = () => {
                 <div class="text-2xl font-bold text-red-600">
                   {{ result.summary.polarErrorCount }}
                 </div>
-                <div class="text-sm text-gray-500 dark:text-gray-400">
+                <div class="text-sm text-neutral-500 dark:text-neutral-400">
                   {{ t('migration.paymentCustomers.polarError') }}
                 </div>
               </div>
@@ -285,7 +285,7 @@ const getCurrentOperation = () => {
                     />
                     <span
                       v-if="item.message"
-                      class="text-xs text-gray-500 dark:text-gray-400 max-w-32 truncate"
+                      class="text-xs text-neutral-500 dark:text-neutral-400 max-w-32 truncate"
                       :title="item.message"
                     >
                       {{ item.message }}
@@ -318,7 +318,7 @@ const getCurrentOperation = () => {
                     />
                     <span
                       v-if="item.message"
-                      class="text-xs text-gray-500 dark:text-gray-400 max-w-32 truncate"
+                      class="text-xs text-neutral-500 dark:text-neutral-400 max-w-32 truncate"
                       :title="item.message"
                     >
                       {{ item.message }}

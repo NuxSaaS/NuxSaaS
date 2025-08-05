@@ -5,7 +5,7 @@ const localePath = useLocalePath()
 
 <template>
   <!-- Navigation -->
-  <nav class="fixed h-16 top-0 left-0 right-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+  <nav class="fixed h-16 top-0 left-0 right-0 z-50 bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800">
     <UContainer class="flex h-full items-center justify-between">
       <NuxtLink
         :to="localePath('/')"
