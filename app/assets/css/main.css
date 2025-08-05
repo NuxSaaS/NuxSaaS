@@ -6,6 +6,6 @@
 }
 @layer base {
   body {
-    @apply bg-gray-100 dark:bg-gray-950;
+    @apply bg-neutral-100 dark:bg-neutral-950;
   }
 }

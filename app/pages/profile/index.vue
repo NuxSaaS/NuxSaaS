@@ -26,7 +26,7 @@ onMounted(() => {
   <UContainer>
     <div class="space-y-6 pt-6">
       <!-- User Profile Section -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg p-6">
+      <div class="bg-white dark:bg-neutral-800 rounded-lg p-6">
         <div class="flex justify-between items-center mb-4">
           <div class="flex items-center gap-4">
             <UAvatar
@@ -39,7 +39,7 @@ onMounted(() => {
               <h1 class="text-2xl font-bold">
                 {{ user?.name || t('profile.anonymousUser') }}
               </h1>
-              <p class="text-gray-500 dark:text-gray-400">
+              <p class="text-neutral-500 dark:text-neutral-400">
                 {{ user?.email }}
               </p>
             </div>
@@ -57,13 +57,13 @@ onMounted(() => {
         <div class="grid gap-4 md:grid-cols-2">
           <div class="space-y-2">
             <p class="flex justify-between">
-              <span class="text-gray-500 dark:text-gray-400">{{ t('profile.role') }}:</span>
+              <span class="text-neutral-500 dark:text-neutral-400">{{ t('profile.role') }}:</span>
               <UBadge :color="user?.role === 'admin' ? 'primary' : 'neutral'">
                 {{ user?.role }}
               </UBadge>
             </p>
             <p class="flex justify-between">
-              <span class="text-gray-500 dark:text-gray-400">{{ t('profile.emailVerified') }}:</span>
+              <span class="text-neutral-500 dark:text-neutral-400">{{ t('profile.emailVerified') }}:</span>
               <UBadge :color="user?.emailVerified ? 'success' : 'warning'">
                 {{ user?.emailVerified ? t('profile.verified') : t('profile.notVerified') }}
               </UBadge>
@@ -71,11 +71,11 @@ onMounted(() => {
           </div>
           <div class="space-y-2">
             <p class="flex justify-between">
-              <span class="text-gray-500 dark:text-gray-400">{{ t('profile.created') }}:</span>
+              <span class="text-neutral-500 dark:text-neutral-400">{{ t('profile.created') }}:</span>
               <span>{{ formatDate(user?.createdAt) }}</span>
             </p>
             <p class="flex justify-between">
-              <span class="text-gray-500 dark:text-gray-400">{{ t('profile.lastUpdated') }}:</span>
+              <span class="text-neutral-500 dark:text-neutral-400">{{ t('profile.lastUpdated') }}:</span>
               <span>{{ formatDate(user?.updatedAt) }}</span>
             </p>
           </div>
@@ -83,20 +83,20 @@ onMounted(() => {
       </div>
 
       <!-- Session Information -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg p-6">
+      <div class="bg-white dark:bg-neutral-800 rounded-lg p-6">
         <h2 class="text-xl font-bold mb-4">
           {{ t('profile.sessionInfo') }}
         </h2>
         <div class="space-y-2">
           <p class="flex justify-between">
-            <span class="text-gray-500 dark:text-gray-400">{{ t('profile.ipAddress') }}:</span>
+            <span class="text-neutral-500 dark:text-neutral-400">{{ t('profile.ipAddress') }}:</span>
             <span>{{ session?.ipAddress }}</span>
           </p>
           <p class="flex justify-between">
-            <span class="text-gray-500 dark:text-gray-400">{{ t('profile.expires') }}:</span>
+            <span class="text-neutral-500 dark:text-neutral-400">{{ t('profile.expires') }}:</span>
             <span>{{ formatDate(session?.expiresAt) }}</span>
           </p>
-          <p class="text-gray-500 dark:text-gray-400">
+          <p class="text-neutral-500 dark:text-neutral-400">
             {{ t('profile.userAgent') }}:
           </p>
           <p class="text-sm break-all">
@@ -106,7 +106,7 @@ onMounted(() => {
       </div>
 
       <!-- Connected Accounts -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg p-6">
+      <div class="bg-white dark:bg-neutral-800 rounded-lg p-6">
         <h2 class="text-xl font-bold mb-4">
           {{ t('profile.connectedAccounts') }}
         </h2>

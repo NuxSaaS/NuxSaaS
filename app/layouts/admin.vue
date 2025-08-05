@@ -51,7 +51,7 @@ const clickSignOut = () => {
       class="fixed top-0 left-0 transition-all duration-300 hidden sm:block"
       :class="[isCollapsed ? 'w-15' : 'w-64']"
     >
-      <div class="h-screen flex flex-col px-3 py-4 bg-gray-100 dark:bg-gray-800">
+      <div class="h-screen flex flex-col px-3 py-4 bg-neutral-100 dark:bg-neutral-800">
         <a
           v-if="!isCollapsed"
           class="flex items-center ps-2.5"
@@ -109,7 +109,7 @@ const clickSignOut = () => {
                 <UAvatar
                   :src="user?.image || undefined"
                   size="xs"
-                  class="border border-gray-300 dark:border-gray-700"
+                  class="border border-neutral-300 dark:border-neutral-700"
                 />
                 <span
                   v-if="!isCollapsed"
@@ -128,7 +128,7 @@ const clickSignOut = () => {
       </div>
     </aside>
     <div
-      class="p-2 h-screen bg-white dark:bg-gray-900 transition-all duration-300 overflow-hidden flex flex-col"
+      class="p-2 h-screen bg-white dark:bg-neutral-900 transition-all duration-300 overflow-hidden flex flex-col"
       :class="[isCollapsed ? 'sm:ml-15' : 'sm:ml-64']"
     >
       <FlexThreeColumn class="mb-2 flex-none">
@@ -177,7 +177,7 @@ const clickSignOut = () => {
           </ClientOnly>
         </template>
       </FlexThreeColumn>
-      <div class="p-2 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 flex-1 overflow-auto">
+      <div class="p-2 border-2 border-neutral-200 border-dashed rounded-lg dark:border-neutral-700 flex-1 overflow-auto">
         <slot />
       </div>
     </div>

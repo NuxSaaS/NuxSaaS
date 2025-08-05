@@ -249,7 +249,7 @@ function onBarChartRendered() {
         >
           <div class="flex items-center justify-between">
             <div>
-              <div class="text-sm text-gray-500 dark:text-gray-400">
+              <div class="text-sm text-neutral-500 dark:text-neutral-400">
                 {{ t(`dashboard.stats.${stat.name}`) }}
               </div>
               <div class="mt-1 text-2xl font-semibold">
@@ -268,7 +268,7 @@ function onBarChartRendered() {
             </div>
             <Icon
               :name="`lucide:${stat.icon}`"
-              class="h-8 w-8 text-gray-400 dark:text-gray-600"
+              class="h-8 w-8 text-neutral-400 dark:text-neutral-600"
             />
           </div>
         </UCard>
@@ -279,7 +279,7 @@ function onBarChartRendered() {
         <UCard class="relative">
           <div
             v-if="areaChartLoading"
-            class="absolute inset-0 z-10 flex items-center justify-center bg-white/80 dark:bg-gray-900/80"
+            class="absolute inset-0 z-10 flex items-center justify-center bg-white/80 dark:bg-neutral-900/80"
           >
             <div class="flex items-center space-x-2">
               <Icon
@@ -298,7 +298,7 @@ function onBarChartRendered() {
         <UCard class="relative">
           <div
             v-if="barChartLoading"
-            class="absolute inset-0 z-10 flex items-center justify-center bg-white/80 dark:bg-gray-900/80"
+            class="absolute inset-0 z-10 flex items-center justify-center bg-white/80 dark:bg-neutral-900/80"
           >
             <div class="flex items-center space-x-2">
               <Icon

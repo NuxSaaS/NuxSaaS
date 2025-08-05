@@ -12,10 +12,10 @@ const { t } = useI18n()
         name="lucide:shield-alert"
         class="mx-auto h-16 w-16 text-red-500 dark:text-red-400"
       />
-      <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <h1 class="mt-4 text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">
         {{ t('403.title') }}
       </h1>
-      <p class="mt-2 text-base text-gray-500 dark:text-gray-400">
+      <p class="mt-2 text-base text-neutral-500 dark:text-neutral-400">
         {{ t('403.message') }}
       </p>
       <div class="mt-6">

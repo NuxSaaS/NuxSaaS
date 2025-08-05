@@ -99,7 +99,7 @@ const plans = [
         <h1 class="text-4xl font-bold">
           {{ t('pricing.title') }}
         </h1>
-        <p class="text-lg text-gray-500 dark:text-gray-400">
+        <p class="text-lg text-neutral-500 dark:text-neutral-400">
           {{ t('pricing.subtitle') }}
         </p>
 
@@ -134,7 +134,7 @@ const plans = [
                 <h2 class="text-2xl font-bold">
                   {{ plan.name }}
                 </h2>
-                <p class="text-gray-500 dark:text-gray-400">
+                <p class="text-neutral-500 dark:text-neutral-400">
                   {{ plan.description }}
                 </p>
               </div>
@@ -143,7 +143,7 @@ const plans = [
                 <div class="text-3xl font-bold">
                   {{ billingPeriod === 'yearly' ? plan.yearPrice || plan.price : plan.price }}
                 </div>
-                <div class="text-sm text-gray-500 dark:text-gray-400">
+                <div class="text-sm text-neutral-500 dark:text-neutral-400">
                   {{ billingPeriod === 'yearly' ? plan.yearPeriod || plan.period : plan.period }}
                 </div>
               </div>

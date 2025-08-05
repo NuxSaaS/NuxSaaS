@@ -4,7 +4,7 @@ const runtimeConfig = useRuntimeConfig()
 </script>
 
 <template>
-  <footer class="w-full h-26 sm:h-16 border-t border-gray-200 dark:border-gray-800 py-4 z-1">
+  <footer class="w-full h-26 sm:h-16 border-t border-neutral-200 dark:border-neutral-800 py-4 z-1">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4">
         <div class="flex items-center space-x-2">
@@ -14,7 +14,7 @@ const runtimeConfig = useRuntimeConfig()
             orientation="vertical"
             class="hidden md:block"
           />
-          <span class="text-sm text-gray-500 dark:text-gray-400">
+          <span class="text-sm text-neutral-500 dark:text-neutral-400">
             © {{ new Date().getFullYear() }} All rights reserved
           </span>
         </div>

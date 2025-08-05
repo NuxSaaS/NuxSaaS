@@ -29,7 +29,7 @@ function formatBytes(bytes: number) {
         <UCard>
           <div class="space-y-4">
             <div>
-              <div class="text-sm text-gray-500 dark:text-gray-400">
+              <div class="text-sm text-neutral-500 dark:text-neutral-400">
                 {{ t('dbStats.activeBackends') }}
               </div>
               <div class="text-xl">
@@ -40,7 +40,7 @@ function formatBytes(bytes: number) {
             <USeparator />
 
             <div>
-              <div class="text-sm text-gray-500 dark:text-gray-400">
+              <div class="text-sm text-neutral-500 dark:text-neutral-400">
                 {{ t('dbStats.transactions') }}
               </div>
               <div class="mt-1 grid grid-cols-2 gap-2">
@@ -64,7 +64,7 @@ function formatBytes(bytes: number) {
         <UCard>
           <div class="space-y-4">
             <div>
-              <div class="text-sm text-gray-500 dark:text-gray-400">
+              <div class="text-sm text-neutral-500 dark:text-neutral-400">
                 {{ t('dbStats.tuples') }}
               </div>
               <div class="mt-1 grid grid-cols-3 gap-2">
@@ -92,7 +92,7 @@ function formatBytes(bytes: number) {
             <USeparator />
 
             <div>
-              <div class="text-sm text-gray-500 dark:text-gray-400">
+              <div class="text-sm text-neutral-500 dark:text-neutral-400">
                 {{ t('dbStats.cacheHitRatio') }}
               </div>
               <div class="text-xl">
@@ -105,7 +105,7 @@ function formatBytes(bytes: number) {
         <UCard>
           <div class="space-y-4">
             <div>
-              <div class="text-sm text-gray-500 dark:text-gray-400">
+              <div class="text-sm text-neutral-500 dark:text-neutral-400">
                 {{ t('dbStats.tempFiles') }}
               </div>
               <div class="mt-1">
@@ -114,7 +114,7 @@ function formatBytes(bytes: number) {
                 </div>
                 <div
                   v-if="dbStats?.tempFiles.bytes"
-                  class="text-sm text-gray-500 dark:text-gray-400"
+                  class="text-sm text-neutral-500 dark:text-neutral-400"
                 >
                   {{ formatBytes(dbStats.tempFiles.bytes) }}
                 </div>
@@ -125,7 +125,7 @@ function formatBytes(bytes: number) {
 
             <div class="grid grid-cols-2 gap-4">
               <div>
-                <div class="text-sm text-gray-500 dark:text-gray-400">
+                <div class="text-sm text-neutral-500 dark:text-neutral-400">
                   {{ t('dbStats.conflicts') }}
                 </div>
                 <div class="text-xl text-warning-500">
@@ -133,7 +133,7 @@ function formatBytes(bytes: number) {
                 </div>
               </div>
               <div>
-                <div class="text-sm text-gray-500 dark:text-gray-400">
+                <div class="text-sm text-neutral-500 dark:text-neutral-400">
                   {{ t('dbStats.deadlocks') }}
                 </div>
                 <div class="text-xl text-error-500">
