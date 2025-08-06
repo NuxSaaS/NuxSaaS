@@ -84,9 +84,6 @@ export default defineNuxtConfig({
       }
     }
   },
-  future: {
-    compatibilityVersion: 4
-  },
   hooks: {
     'pages:extend': function (pages) {
       const pagesToRemove: NuxtPage[] = []
