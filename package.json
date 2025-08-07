@@ -16,7 +16,7 @@
     "db:migrate": "drizzle-kit migrate --config ./server/database/drizzle.config.ts",
     "build": "nuxt build",
     "serve": "node .output/server/index.mjs",
-    "preview:cf": "wrangler dev",
+    "preview:cf": "wrangler dev --x-remote-bindings",
     "deploy": "wrangler deploy",
     "prepare": "husky"
   },
