@@ -94,7 +94,7 @@ npm run deploy
 
 If you find this project helpful, please consider:
 - Giving it a star ⭐
-- [Becoming a sponsor on Patreon](https://patreon.com/NuxSaaS) 💖
+- [Becoming a sponsor on GitHub](https://github.com/sponsors/Cyanhall) 💖
 
 Your support helps maintain and improve NuxSaaS!
 
