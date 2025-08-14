@@ -4,9 +4,9 @@ import type { CellContext, RowData } from '@tanstack/vue-table'
 
 export type { FormSubmitEvent, NavigationMenuItem, TableData } from '@nuxt/ui'
 export type { Row } from '@tanstack/vue-table'
-export { z } from 'zod/v4'
-export type { output as zodOutput } from 'zod/v4'
-export { locales as zodLocales } from 'zod/v4'
+export { z } from 'zod'
+export type { output as zodOutput } from 'zod'
+export { locales as zodLocales } from 'zod'
 
 export type TranFunction = (name: string, options?: StringDict<any>) => string
 export type ColumnCell<TData extends RowData, TValue = unknown> = CellContext<TData, TValue>
