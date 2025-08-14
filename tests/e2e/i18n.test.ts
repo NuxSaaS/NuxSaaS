@@ -32,8 +32,7 @@ describe('i18n', async () => {
     // Switch to French
     await page.click('button[aria-label="Change language"]')
     await page.click('span:has-text("Français")')
-    await page.waitForLoadState('networkidle')
-
+    await page.waitForURL('**/fr')
     expect(page.url()).toContain('/fr')
   })
 
@@ -41,7 +40,7 @@ describe('i18n', async () => {
     // Navigate to signin page
     const page = await createPage('/fr')
     await page.click('a:has-text("Commencer")')
-    await page.waitForLoadState('networkidle')
+    await page.waitForURL('**/fr/signin')
     expect(page.url()).toContain('/fr/signin')
 
     // Navigate to signup page
