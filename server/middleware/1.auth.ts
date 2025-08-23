@@ -4,8 +4,8 @@ export default defineEventHandler(async (event) => {
   const path = event.path
 
   if (path?.startsWith('/api/admin')) {
-    const session = await requireAuth(event)
-    if (!session.user || (session.user as User).role !== 'admin') {
+    const user = await requireAuth(event)
+    if (user.role !== 'admin') {
       throw createError({
         statusCode: 403,
         statusMessage: 'Forbidden',

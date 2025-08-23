@@ -1,4 +1,5 @@
 import type { H3Event } from 'h3'
+import type { User } from '~~/shared/utils/types'
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { APIError, createAuthMiddleware } from 'better-auth/api'
@@ -202,13 +203,13 @@ export const getAuthSession = async (event: H3Event) => {
 
 export const requireAuth = async (event: H3Event) => {
   const session = await getAuthSession(event)
-  if (!session) {
+  if (!session || !session.user) {
     throw createError({
       statusCode: 401,
       statusMessage: 'Unauthorized'
     })
   }
   // Save the session to the event context for later use
-  event.context.auth = session!
-  return session!
+  event.context.user = session.user
+  return session.user as User
 }
