@@ -1,5 +1,12 @@
 import type { NitroRuntimeConfig } from 'nitropack/types'
+import type { FileManagerConfig } from '../services/file/types'
 import { config } from 'dotenv'
+
+declare module '@nuxt/schema' {
+  interface RuntimeConfig {
+    fileManager: FileManagerConfig
+  }
+}
 
 let runtimeConfigInstance: NitroRuntimeConfig
 
@@ -28,6 +35,23 @@ export const generateRuntimeConfig = () => ({
   // DB
   redisUrl: process.env.NUXT_REDIS_URL,
   databaseUrl: process.env.NUXT_DATABASE_URL,
+  // File
+  fileManager: {
+    storage: {
+      provider: 'r2',
+      r2: {
+        accountId: process.env.NUXT_CF_ACCOUNT_ID!,
+        accessKeyId: process.env.NUXT_CF_ACCESS_KEY_ID!,
+        secretAccessKey: process.env.NUXT_CF_SECRET_ACCESS_KEY!,
+        bucketName: process.env.NUXT_CF_R2_BUCKET_NAME!,
+        publicUrl: process.env.NUXT_CF_R2_PUBLIC_URL!
+      }
+    },
+    uploadRateLimit: {
+      maxUploadsPerWindow: 100,
+      windowSizeMinutes: 1
+    }
+  } satisfies FileManagerConfig,
   public: {
     baseURL: process.env.NUXT_APP_URL,
     appName: process.env.NUXT_APP_NAME,

@@ -1,0 +1,102 @@
+{
+  "en": {
+    "fileManager": {
+      "filename": "Filename",
+      "size": "Size",
+      "type": "Type",
+      "uploadedBy": "Uploaded By",
+      "uploadedAt": "Uploaded At",
+      "preview": "Preview",
+      "images": "Images",
+      "videos": "Videos",
+      "audios": "Audios",
+      "applications": "Applications",
+      "texts": "Texts",
+      "documents": "Documents",
+      "others": "Others",
+      "upload": "Upload Files",
+      "uploading": "Uploading...",
+      "download": "Download",
+      "deleteSuccess": "File deleted successfully",
+      "deleteError": "Failed to delete file",
+      "selectedFiles": "Selected Files",
+      "uploadedFiles": "Uploaded Files",
+      "uploadSuccess": "File uploaded successfully"
+    }
+  },
+  "zh-CN": {
+    "fileManager": {
+      "filename": "文件名",
+      "size": "大小",
+      "type": "类型",
+      "uploadedBy": "上传者",
+      "uploadedAt": "上传时间",
+      "preview": "预览",
+      "images": "图片",
+      "videos": "视频",
+      "audios": "音频",
+      "applications": "应用程序",
+      "texts": "文本",
+      "documents": "文档",
+      "others": "其他",
+      "upload": "上传文件",
+      "uploading": "上传中...",
+      "download": "下载",
+      "deleteSuccess": "文件删除成功",
+      "deleteError": "删除文件失败",
+      "selectedFiles": "已选择文件",
+      "uploadedFiles": "已上传文件",
+      "uploadSuccess": "文件上传成功"
+    }
+  },
+  "ja": {
+    "fileManager": {
+      "filename": "ファイル名",
+      "size": "サイズ",
+      "type": "タイプ",
+      "uploadedBy": "アップロード者",
+      "uploadedAt": "アップロード日時",
+      "preview": "プレビュー",
+      "images": "画像",
+      "videos": "動画",
+      "audios": "音声",
+      "applications": "アプリケーション",
+      "texts": "テキスト",
+      "documents": "ドキュメント",
+      "others": "その他",
+      "upload": "ファイルアップロード",
+      "uploading": "アップロード中...",
+      "download": "ダウンロード",
+      "deleteSuccess": "ファイルが正常に削除されました",
+      "deleteError": "ファイルの削除に失敗しました",
+      "selectedFiles": "選択されたファイル",
+      "uploadedFiles": "アップロード済みファイル",
+      "uploadSuccess": "ファイルが正常にアップロードされました"
+    }
+  },
+  "fr": {
+    "fileManager": {
+      "filename": "Nom du fichier",
+      "size": "Taille",
+      "type": "Type",
+      "uploadedBy": "Téléchargé par",
+      "uploadedAt": "Téléchargé le",
+      "preview": "Aperçu",
+      "images": "Images",
+      "videos": "Vidéos",
+      "audios": "Audio",
+      "applications": "Applications",
+      "texts": "Textes",
+      "documents": "Documents",
+      "others": "Autres",
+      "upload": "Télécharger des fichiers",
+      "uploading": "Téléchargement en cours...",
+      "download": "Télécharger",
+      "deleteSuccess": "Fichier supprimé avec succès",
+      "deleteError": "Échec de la suppression du fichier",
+      "selectedFiles": "Fichiers sélectionnés",
+      "uploadedFiles": "Fichiers téléchargés",
+      "uploadSuccess": "Fichier téléchargé avec succès"
+    }
+  }
+}

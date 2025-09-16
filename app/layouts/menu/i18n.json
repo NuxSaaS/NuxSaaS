@@ -10,7 +10,8 @@
       "dbStats": "Database Status",
       "home": "Home",
       "auditLog": "Audit Log",
-      "migration": "Data Migration"
+      "migration": "Data Migration",
+      "files": "Files"
     }
   },
   "zh-CN": {
@@ -24,7 +25,8 @@
       "dbStats": "数据库状态",
       "home": "首页",
       "auditLog": "审计日志",
-      "migration": "数据迁移"
+      "migration": "数据迁移",
+      "files": "文件管理"
     }
   },
   "ja": {
@@ -38,7 +40,8 @@
       "dbStats": "データベース状態",
       "home": "ホーム",
       "auditLog": "監査ログ",
-      "migration": "データ移行"
+      "migration": "データ移行",
+      "files": "ファイル"
     }
   },
   "fr": {
@@ -52,7 +55,8 @@
       "dbStats": "État de la base de données",
       "home": "Accueil",
       "auditLog": "Journal d'audit",
-      "migration": "Migration de Données"
+      "migration": "Migration de Données",
+      "files": "Fichiers"
     }
   }
 }

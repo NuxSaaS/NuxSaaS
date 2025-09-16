@@ -28,3 +28,4 @@ server/database/migrations
 tests/coverage
 .wrangler/
 wrangler.toml
+uploads/

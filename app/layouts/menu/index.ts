@@ -19,6 +19,11 @@ export const getMenus = (t: TranFunction, localePath: LocalePathFunction, appRep
         to: localePath('/admin/subscription')
       },
       {
+        label: t('menu.files'),
+        icon: 'i-lucide-folder',
+        to: localePath('/admin/file')
+      },
+      {
         label: t('menu.maintenance'),
         icon: 'i-lucide-wrench',
         children: [
