@@ -8,13 +8,14 @@ export interface StorageProvider {
   exists: (path: string) => Promise<boolean>
 }
 
+export type StorageProviderType = 'local' | 's3' | 'r2'
+
 export interface FileManagerConfig {
   storage: {
-    provider: 'local' | 's3' | 'r2'
+    provider: StorageProviderType
     local?: {
       uploadDir: string
       publicPath: string
-      maxAge: number
     }
     s3?: {
       region: string

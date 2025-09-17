@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import type { NuxtPage } from 'nuxt/schema'
+import { resolve } from 'node:path'
 import { generateRuntimeConfig } from './server/utils/runtimeConfig'
 
 console.log(`Current NODE_ENV: ${process.env.NODE_ENV}`)
@@ -124,7 +125,13 @@ export default defineNuxtConfig({
     preset: process.env.NUXT_NITRO_PRESET,
     rollupConfig: {
       external: process.env.NUXT_NITRO_PRESET != 'node-server' ? ['pg-native'] : undefined
-    }
+    },
+    publicAssets: process.env.NUXT_APP_STORAGE === 'local'
+      ? [{
+          dir: resolve(process.env.NUXT_LOCAL_UPLOAD_DIR || './uploads'),
+          baseURL: process.env.NUXT_LOCAL_PUBLIC_PATH || '/uploads'
+        }]
+      : undefined
   },
   $production: {
     build: {
