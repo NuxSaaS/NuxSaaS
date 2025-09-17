@@ -47,8 +47,8 @@ export function useAuth() {
       return
     }
     sessionFetching.value = true
-    const { data } = await client.useSession(useFetch)
-    session.value = data.value?.session || null
+    const { data } = await client.getSession()
+    session.value = data?.session || null
 
     const userDefaults = {
       image: null,
@@ -58,8 +58,8 @@ export function useAuth() {
       banExpires: null,
       stripeCustomerId: null
     }
-    user.value = data.value?.user
-      ? Object.assign({}, userDefaults, data.value.user)
+    user.value = data?.user
+      ? Object.assign({}, userDefaults, data.user)
       : null
     subscriptions.value = []
     if (user.value) {
