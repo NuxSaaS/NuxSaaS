@@ -14,7 +14,7 @@
     {
       "type": "node",
       "request": "launch",
-      "runtimeVersion": "22.15",
+      "runtimeVersion": "22.19",
       "name": "server: nuxt",
       "outputCapture": "std",
       "program": "${workspaceFolder}/node_modules/nuxt/bin/nuxt.mjs",

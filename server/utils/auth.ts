@@ -17,7 +17,7 @@ console.log(`Base URL is ${runtimeConfig.public.baseURL}`)
 
 export const createBetterAuth = () => betterAuth({
   baseURL: runtimeConfig.public.baseURL,
-  trustedOrigins: ['http://localhost:8787', runtimeConfig.public.baseURL],
+  trustedOrigins: ['http://localhost:8787', 'http://localhost:3000', 'http://localhost:3001', runtimeConfig.public.baseURL],
   secret: runtimeConfig.betterAuthSecret,
   database: drizzleAdapter(
     getDB(),
@@ -45,8 +45,12 @@ export const createBetterAuth = () => betterAuth({
   secondaryStorage: cacheClient,
   emailAndPassword: {
     enabled: true,
-    requireEmailVerification: true,
+    requireEmailVerification: false,
     sendResetPassword: async ({ user, url }) => {
+      if (!runtimeConfig.resendApiKey) {
+        console.warn('Resend API key not configured. Skipping sending reset password email.')
+        return
+      }
       const response = await resendInstance.emails.send({
         from: `${runtimeConfig.public.appName} <${runtimeConfig.public.appNotifyEmail}>`,
         to: user.email,
@@ -75,6 +79,10 @@ export const createBetterAuth = () => betterAuth({
     sendOnSignUp: true,
     autoSignInAfterVerification: true,
     sendVerificationEmail: async ({ user, url }) => {
+      if (!runtimeConfig.resendApiKey) {
+        console.warn('Resend API key not configured. Skipping sending verification email.')
+        return
+      }
       const response = await resendInstance.emails.send({
         from: `${runtimeConfig.public.appName} <${runtimeConfig.public.appNotifyEmail}>`,
         to: user.email,
@@ -167,8 +175,8 @@ export const createBetterAuth = () => betterAuth({
   plugins: [
     ...(runtimeConfig.public.appEnv === 'development' ? [openAPI()] : []),
     admin(),
-    setupStripe(),
-    setupPolar()
+    ...(runtimeConfig.stripeSecretKey ? [setupStripe()] : []),
+    ...(runtimeConfig.polarAccessToken ? [setupPolar()] : [])
   ]
 })
 
