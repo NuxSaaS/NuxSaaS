@@ -102,7 +102,7 @@ const removeUploadedFile = (index: number) => {
                 <div
                   v-for="(file, index) in files"
                   :key="index"
-                  class="flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-800 rounded"
+                  class="flex items-center justify-between p-2 bg-neutral-50 dark:bg-neutral-800 rounded"
                 >
                   <div class="flex items-center space-x-2">
                     <UIcon
@@ -110,7 +110,7 @@ const removeUploadedFile = (index: number) => {
                       class="w-4 h-4"
                     />
                     <span class="text-sm truncate">{{ file.name }}</span>
-                    <span class="text-xs text-gray-500">({{ formatFileSize(file.size) }})</span>
+                    <span class="text-xs text-neutral-500">({{ formatFileSize(file.size) }})</span>
                   </div>
                   <UButton
                     size="xs"
@@ -151,7 +151,7 @@ const removeUploadedFile = (index: number) => {
                   class="w-4 h-4 text-green-500"
                 />
                 <span class="text-sm truncate">{{ file.originalName }}</span>
-                <span class="text-xs text-gray-500">({{ formatFileSize(file.size) }})</span>
+                <span class="text-xs text-neutral-500">({{ formatFileSize(file.size) }})</span>
               </div>
               <UButton
                 size="xs"

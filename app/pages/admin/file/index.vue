@@ -128,7 +128,7 @@ const columns: AdminTableColumn<FileWithUser>[] = [
       }
       return h(UIcon, {
         name: getFileTypeIcon(file.mimeType),
-        class: 'w-6 h-6 text-gray-500'
+        class: 'w-6 h-6 text-neutral-500'
       })
     }
   },
@@ -139,7 +139,7 @@ const columns: AdminTableColumn<FileWithUser>[] = [
       const file = row.original
       return h('div', { class: 'flex flex-col' }, [
         h('span', { class: 'font-medium truncate max-w-xs' }, file.originalName),
-        h('span', { class: 'text-xs text-gray-500' }, file.fileName)
+        h('span', { class: 'text-xs text-neutral-500' }, file.fileName)
       ])
     }
   },
