@@ -21,6 +21,17 @@
       "args": [
         "dev"
       ]
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Nuxt: Attach to Process",
+      "port": 9229,
+      "autoAttachChildProcesses": true,
+      "skipFiles": [
+        "<node_internals>/**",
+        "node_modules/**"
+      ]
     }
   ],
   "compounds": [
