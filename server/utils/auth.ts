@@ -122,26 +122,41 @@ export const createBetterAuth = () => betterAuth({
 
       let targetType
       let targetId
-      if (ctx.context.session) {
+      if (ctx.context.session || ctx.context.newSession) {
         targetType = 'user'
-        targetId = ctx.context.session.user.id
+        targetId = ctx.context.session?.user.id || ctx.context.newSession?.user.id
       } else if (['/sign-in/email', '/sign-up/email', 'forget-password'].includes(ctx.path)) {
         targetType = 'email'
         targetId = ctx.body.email || ''
       }
-
-      if (ctx.context.returned && ctx.context.returned instanceof APIError) {
-        await logAuditEvent({
-          userId: ctx.context.session?.user.id,
-          category: 'auth',
-          action: ctx.path,
-          targetType,
-          targetId,
-          ipAddress,
-          userAgent,
-          status: 'failure',
-          details: ctx.context.returned.body?.message
-        })
+      const returned = ctx.context.returned
+      if (returned && returned instanceof APIError) {
+        const userId = ctx.context.newSession?.user.id
+        if (ctx.path == '/callback/:id' && returned.status == 'FOUND' && userId) {
+          const provider = ctx.params.id
+          await logAuditEvent({
+            userId,
+            category: 'auth',
+            action: ctx.path.replace(':id', provider),
+            targetType,
+            targetId,
+            ipAddress,
+            userAgent,
+            status: 'success'
+          })
+        } else {
+          await logAuditEvent({
+            userId: ctx.context.session?.user.id,
+            category: 'auth',
+            action: ctx.path,
+            targetType,
+            targetId,
+            ipAddress,
+            userAgent,
+            status: 'failure',
+            details: returned.body?.message
+          })
+        }
       } else {
         if (['/sign-in/email', '/sign-up/email', '/forget-password', '/reset-password'].includes(ctx.path)) {
           let userId: string | undefined
