@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+
+
+  db:
+    image: postgres:15
+    container_name: nuxsaas_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: nuxsaas
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7
+    container_name: nuxsaas_redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis_data:/data
+
+#volumes:
+#  db_data:
+#  redis_data:
+
